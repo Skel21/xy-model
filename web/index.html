@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>XY model</title>
+</head>
+<body>
+
+    <div class="content grey darken-3">
+
+        <div class="simulation">
+            <canvas id="simulation"></canvas>
+        </div>
+
+        <div class="sidebar grey darken-4">
+            <h3 class="grey-text text-lighten-5">Controls</h3>
+            <div class="controls">
+                <div class="control-input grey-text text-lighten-5">
+                    <h5>Temperature</h5>
+                    <input class="grey darken-4" type="range" id="temperature" name="volume" min="0.0" max="2.0" step="0.01" oninput="set_temperature(this.value)" onchange="set_temperature(this.value)" />
+                    <output id="temperature-output" for="temperature"></output>
+                </div>
+                <div class="grey-text text-lighten-5 control-input">
+                    <h5>Reset system</h5>
+                    <button class="btn blue-grey darken-3" type="button" onclick="reset()">Reset</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="/wasm/xy_model.js"></script>
+    <script src="simulation.js"></script>
+</body>
+</html>

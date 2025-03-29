@@ -1,0 +1,50 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-size: large;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.simulation {
+    box-sizing: border-box;
+    width: 100vmin;
+    height: 100vmin;
+    padding: 3vmin;
+    box-sizing: border-box;
+}
+
+#simulation {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.controls {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control-input {
+    padding: 50px;
+    text-align: center;
+}
+
+.control-input > h5 {
+    padding: 10px;
+    border-bottom: 1px solid grey;
+}
