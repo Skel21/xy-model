@@ -1,8 +1,7 @@
 #include <SDL3/SDL.h>
 #include <iostream>
 #include "../src/types.h"
-#include "../src/xy.h" // TODO: probably bad practice
-// TODO: how to do slider and reset button?
+#include "../src/xy.h"
 
 #ifndef VIS_H
 #define VIS_H
