@@ -27,7 +27,7 @@ void init()
     SDL_SetHint(SDL_HINT_EMSCRIPTEN_CANVAS_SELECTOR, "#simulation");
 #endif
     settings = new ModelSettings();
-    settings->temperature = 0.1;
+    settings->temperature = 1.0;
     settings->grid_size = 200;
     model = new XYModel(*settings);
     vis = new Visualizer(*settings, 4);
