@@ -15,6 +15,7 @@ ModelSettings *settings;
 XYModel *model;
 Visualizer *vis;
 
+
 void main_loop()
 {
     model->step();
@@ -28,7 +29,7 @@ void init()
 #endif
     settings = new ModelSettings();
     settings->temperature = 1.0;
-    settings->grid_size = 200;
+    settings->grid_size = 100;
     model = new XYModel(*settings);
     vis = new Visualizer(*settings, 4);
 }
@@ -36,6 +37,7 @@ void init()
 void reset()
 {
     model->initialize();
+    vis->draw(model->grid);
 }
 
 void set_temperature(float temperature) {
@@ -43,6 +45,18 @@ void set_temperature(float temperature) {
 }
 
 #ifdef __EMSCRIPTEN__
+
+void play_pause(bool paused)
+{
+    if (paused)
+    {
+        emscripten_cancel_main_loop();
+    }
+    else
+    {
+        emscripten_set_main_loop(main_loop, 0, 1);
+    }
+}
 
 void set_main_loop()
 {
@@ -56,6 +70,7 @@ EMSCRIPTEN_BINDINGS()
     emscripten::function("main_loop", &main_loop);
     emscripten::function("set_main_loop", &set_main_loop);
     emscripten::function("set_temperature", &set_temperature);
+    emscripten::function("play_pause", &play_pause);
 };
 #endif
 
