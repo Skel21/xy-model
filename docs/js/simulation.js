@@ -1,5 +1,6 @@
 let isPaused = false;
 const playPauseButton = $("#play-pause-button");
+const temperatureInput = $("#temperature");
 const temperatureOutput = $("#temperature-output");
 
 function reset() {
@@ -20,5 +21,7 @@ function play_pause() {
 Module.onRuntimeInitialized = () => {
     console.log("WASM Module Loaded");
     Module.init();
+    temperatureInput.value = "1.0";
+    set_temperature("1.0");
     Module.set_main_loop();
 }
