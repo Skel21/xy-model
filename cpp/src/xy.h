@@ -12,6 +12,7 @@ struct ModelSettings {
     int grid_size;
     double anisotropy;
     double external_field;
+    double colormap_angle;
 };
 
 

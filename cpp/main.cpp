@@ -53,6 +53,10 @@ void set_external_field(double external_field) {
     settings->external_field = external_field;
 }
 
+void set_colormap_angle(double angle) {
+    settings->colormap_angle = angle;
+}
+
 #ifdef __EMSCRIPTEN__
 
 void play_pause(bool paused)
@@ -82,6 +86,7 @@ EMSCRIPTEN_BINDINGS()
     emscripten::function("play_pause", &play_pause);
     emscripten::function("set_anisotropy", &set_anisotropy);
     emscripten::function("set_external_field", &set_external_field);
+    emscripten::function("set_colormap_angle", &set_colormap_angle);
 };
 #endif
 

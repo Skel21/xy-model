@@ -6,9 +6,9 @@
 #ifndef VIS_H
 #define VIS_H
 
-uint32_t colorMap(float angle) {
+uint32_t colorMap(float angle, float colormap_angle) {
     float r, g, b;
-
+    angle = fmod(angle + colormap_angle, 2 * M_PI);
     float hPrime = (angle/(2.0 * M_PI) * 6);
     float x = (1-fabs(fmod(hPrime, 2.0) - 1));
     switch (static_cast<int>(hPrime) % 6) {
@@ -69,7 +69,7 @@ bool Visualizer::init() {
 void Visualizer::draw(Grid& grid) {
     for (int i = 0; i < settings->grid_size; i++) {
         for (int j = 0; j < settings->grid_size; j++) {
-            pixels[i * settings->grid_size + j] = colorMap(grid[j][i]);
+            pixels[i * settings->grid_size + j] = colorMap(grid[j][i], settings->colormap_angle);
         }
     }
     SDL_UpdateTexture(texture, NULL, pixels, settings->grid_size * sizeof(uint32_t));

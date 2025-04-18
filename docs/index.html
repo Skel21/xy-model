@@ -33,6 +33,11 @@
                     <input type="range" id="external-field" name="external-field" min="-1.0" max="1.0" step="0.05" oninput="set_external_field(this.value)" onchange="set_external_field(this.value)" />
                     <output id="external-field-output" for="external-field"></output>
                 </div>
+                <div class="control-input grey-text text-lighten-5">
+                    <h5>Simulation Colors</h5>
+                    <input type="range" id="colormap-angle" name="colormap-angle" min="0.0" max="6.28" step="0.01" value="0.0" oninput="set_colormap_angle(this.value)" onchange="set_colormap_angle(this.value)" />
+                    <output id="colormap-angle-output" for="colormap-angle"></output>
+                </div>
                 <div class="grey-text text-lighten-5 control-input">
                     <h5>Reset system</h5>
                     <button class="btn" type="button" onclick="reset()">Reset</button>
