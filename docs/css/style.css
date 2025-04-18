@@ -6,10 +6,22 @@ html, body {
 
 .content {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: stretch;
+    max-height: 100vh;
+}
+
+@media (min-aspect-ratio: 1/1) {
+    .content {
+        flex-direction: row;
+    }
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .content {
+        flex-direction: column;
+    }
 }
 
 .simulation {
@@ -18,6 +30,7 @@ html, body {
     height: 100vmin;
     padding: 3vmin;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 #simulation {
@@ -26,21 +39,23 @@ html, body {
 }
 
 .sidebar {
-    flex-grow: 1;
     text-align: center;
+    min-width: 300px;
+    overflow: auto;
 }
 
 .controls {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: start;
 }
 
 .control-input {
     padding: 50px;
+    min-width: 150px;
     text-align: center;
 }
 
