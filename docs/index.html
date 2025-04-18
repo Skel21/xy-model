@@ -20,8 +20,13 @@
             <div class="controls">
                 <div class="control-input grey-text text-lighten-5">
                     <h5>Temperature</h5>
-                    <input type="range" id="temperature" name="volume" min="0.0" max="2.0" step="0.01" oninput="set_temperature(this.value)" onchange="set_temperature(this.value)" />
+                    <input type="range" id="temperature" name="temperature" min="0.0" max="2.0" step="0.01" oninput="set_temperature(this.value)" onchange="set_temperature(this.value)" />
                     <output id="temperature-output" for="temperature"></output>
+                </div>
+                <div class="control-input grey-text text-lighten-5">
+                    <h5>Anisotropy</h5>
+                    <input type="range" id="anisotropy" name="anisotropy" min="0.0" max="1.0" step="0.01" oninput="set_anisotropy(this.value)" onchange="set_anisotropy(this.value)" />
+                    <output id="anisotropy-output" for="anisotropy"></output>
                 </div>
                 <div class="grey-text text-lighten-5 control-input">
                     <h5>Reset system</h5>

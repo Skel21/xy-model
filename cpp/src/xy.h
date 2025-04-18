@@ -10,6 +10,7 @@
 struct ModelSettings {
     double temperature;
     int grid_size;
+    double anisotropy;
 };
 
 
@@ -62,7 +63,6 @@ void XYModel::mc_step() {
     float energy_diff = local_energy_diff(point, new_angle);
     if (energy_diff < 0 || 
         prob_generator.generate() < exp(-energy_diff / settings->temperature)) {
-
         grid[point.second][point.first] = new_angle;
     }
 }
@@ -78,12 +78,12 @@ float XYModel::local_energy(Point point) {
 }
 
 float XYModel::local_energy(Point point, float angle) {
-    float energy = 0;
+    float energy = settings->anisotropy * (pow(cos(angle), 2) - pow(sin(angle), 2));
     int x, y;
     for (Point neighbor : neighbors) {
         x = (point.first + neighbor.first + settings->grid_size) % settings->grid_size;
         y = (point.second + neighbor.second + settings->grid_size) % settings->grid_size;
-        energy += cos(grid[y][x] - angle);
+        energy -= cos(grid[y][x] - angle);
     }
     return energy;
 }

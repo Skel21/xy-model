@@ -30,6 +30,7 @@ void init()
     settings = new ModelSettings();
     settings->temperature = 1.0;
     settings->grid_size = 100;
+    settings->anisotropy = 0.0;
     model = new XYModel(*settings);
     vis = new Visualizer(*settings, 4);
 }
@@ -40,8 +41,12 @@ void reset()
     vis->draw(model->grid);
 }
 
-void set_temperature(float temperature) {
+void set_temperature(double temperature) {
     settings->temperature = temperature;
+}
+
+void set_anisotropy(double anisotropy) {
+    settings->anisotropy = anisotropy;
 }
 
 #ifdef __EMSCRIPTEN__
@@ -71,6 +76,7 @@ EMSCRIPTEN_BINDINGS()
     emscripten::function("set_main_loop", &set_main_loop);
     emscripten::function("set_temperature", &set_temperature);
     emscripten::function("play_pause", &play_pause);
+    emscripten::function("set_anisotropy", &set_anisotropy);
 };
 #endif
 
