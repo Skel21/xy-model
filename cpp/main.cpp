@@ -49,6 +49,10 @@ void set_anisotropy(double anisotropy) {
     settings->anisotropy = anisotropy;
 }
 
+void set_external_field(double external_field) {
+    settings->external_field = external_field;
+}
+
 #ifdef __EMSCRIPTEN__
 
 void play_pause(bool paused)
@@ -77,6 +81,7 @@ EMSCRIPTEN_BINDINGS()
     emscripten::function("set_temperature", &set_temperature);
     emscripten::function("play_pause", &play_pause);
     emscripten::function("set_anisotropy", &set_anisotropy);
+    emscripten::function("set_external_field", &set_external_field);
 };
 #endif
 

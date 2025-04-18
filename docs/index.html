@@ -25,8 +25,13 @@
                 </div>
                 <div class="control-input grey-text text-lighten-5">
                     <h5>Anisotropy</h5>
-                    <input type="range" id="anisotropy" name="anisotropy" min="0.0" max="1.0" step="0.01" oninput="set_anisotropy(this.value)" onchange="set_anisotropy(this.value)" />
+                    <input type="range" id="anisotropy" name="anisotropy" min="0.0" max="1.0" step="0.01" value="0.0" oninput="set_anisotropy(this.value)" onchange="set_anisotropy(this.value)" />
                     <output id="anisotropy-output" for="anisotropy"></output>
+                </div>
+                <div class="control-input grey-text text-lighten-5">
+                    <h5>External Field</h5>
+                    <input type="range" id="external-field" name="external-field" min="-1.0" max="1.0" step="0.05" oninput="set_external_field(this.value)" onchange="set_external_field(this.value)" />
+                    <output id="external-field-output" for="external-field"></output>
                 </div>
                 <div class="grey-text text-lighten-5 control-input">
                     <h5>Reset system</h5>

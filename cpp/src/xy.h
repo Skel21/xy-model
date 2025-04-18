@@ -11,6 +11,7 @@ struct ModelSettings {
     double temperature;
     int grid_size;
     double anisotropy;
+    double external_field;
 };
 
 
@@ -78,7 +79,8 @@ float XYModel::local_energy(Point point) {
 }
 
 float XYModel::local_energy(Point point, float angle) {
-    float energy = settings->anisotropy * (pow(cos(angle), 2) - pow(sin(angle), 2));
+    float energy = settings->anisotropy * (pow(cos(angle), 2) - pow(sin(angle), 2)) + 
+                  settings->external_field * sin(angle);
     int x, y;
     for (Point neighbor : neighbors) {
         x = (point.first + neighbor.first + settings->grid_size) % settings->grid_size;
