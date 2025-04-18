@@ -6,12 +6,23 @@
 #ifndef VIS_H
 #define VIS_H
 
-uint32_t colorMap(float value) {
+uint32_t colorMap(float angle) {
     float r, g, b;
-    r = fabs(sin(value));
-    g = fabs(sin(value + M_PI / 3.0));
-    b = fabs(sin(value + 2.0 * M_PI / 3.0));
-    return 0xFF000000 | (static_cast<Uint8>(r * 255)<<16) | (static_cast<Uint8>(g * 255)<<8) | static_cast<Uint8>(b * 255);
+
+    float hPrime = (angle/(2.0 * M_PI) * 6);
+    float x = (1-fabs(fmod(hPrime, 2.0) - 1));
+    switch (static_cast<int>(hPrime) % 6) {
+        case 0: r = 1; g = x; b = 0; break;
+        case 1: r = x; g = 1; b = 0; break;
+        case 2: r = 0; g = 1; b = x; break;
+        case 3: r = 0; g = x; b = 1; break;
+        case 4: r = x; g = 0; b = 1; break;
+        case 5: r = 1; g = 0; b = x; break;
+    }
+
+    return 0xFF000000 | (static_cast<uint8_t>(r * 255) << 16) |
+                         (static_cast<uint8_t>(g * 255) << 8)  |
+                         static_cast<uint8_t>(b * 255);
 }
 
 
