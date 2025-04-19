@@ -1,3 +1,8 @@
 .vscode
 TODO.md
-docs/.sass-cache
+web/.sass-cache
+web/wasm
+web/scss
+web/css/materialize.css
+web/css/materialize.css.map
+compile_and_run.sh
