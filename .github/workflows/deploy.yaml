@@ -33,10 +33,10 @@ jobs:
               -O2
 
       - name: Build scss
-        run: |
-          sass ./web/scss/materialize.scss ./dist/css/materialize.css \
-              --style compressed \
-              --no-cache
+        uses: gha-utilities/sass-build@v0.6.0
+        with:
+          source: ./web/scss/materialize.scss
+          destination: ./dist/css/materialize.css
     
       - name: Copy static files
         run: |
